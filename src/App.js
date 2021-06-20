@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchCryptos} from './actions/cryptoActions'
 import CryptoList from './components/CryptoList'
+import NavBar from './components/NavBar'
 
 // import logo from './logo.svg';
 import './App.css';
@@ -28,10 +29,15 @@ class App extends Component {
   render() {
     console.log(this.props.cryptoData)
     return (
+      <>
+      <div className="App">
+        <NavBar />
+      </div>
       <div className="App">
         <h1>Cryptos:</h1>
         {this.handleLoading()}
       </div>
+      </>
     )
   }
 }
