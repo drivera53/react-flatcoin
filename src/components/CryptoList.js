@@ -1,6 +1,7 @@
 import React from 'react'
 import Crypto from './Crypto'
 import './CryptoList.css'
+// import { db } from "../firebase"
 
 class CryptoList extends React.Component {
 

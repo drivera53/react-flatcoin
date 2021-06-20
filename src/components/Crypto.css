@@ -33,3 +33,11 @@ padding-bottom: 4px;
 .row__percentage {
 color: #5AC53B;
 }
+
+.row__mini_chart {
+    padding: 0 10px;
+}
+
+.row__image {
+    padding: 0 10px;
+}

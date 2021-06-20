@@ -6,6 +6,8 @@ import CryptoList from './components/CryptoList'
 // import logo from './logo.svg';
 import './App.css';
 
+import Loading from './svg/Loading'
+
 class App extends Component {
 
   componentDidMount() {
@@ -16,7 +18,8 @@ class App extends Component {
   handleLoading = () => {
     console.log(this.props.loading) // Will console.log true or false
     if(this.props.loading) {
-      return <div>Loading...</div>
+      // return <div>Loading...</div>
+      return <Loading />
     } else {
       return <CryptoList cryptoData={this.props.cryptoData} />
     }
