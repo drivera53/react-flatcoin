@@ -1,6 +1,6 @@
 import React from 'react'
 import './Dashboard.css'
-// import LineGraph from './LineGraph'
+import LineGraph from './LineGraph'
 
 function Dashboard() {
     return (
@@ -12,7 +12,7 @@ function Dashboard() {
                         <p>+$44.63 (+0.04%)</p>
                     </div>
                     <div className="dashboard__chart">
-                        {/* <LineGraph /> */}
+                        <LineGraph />
                     </div>
                 </div>
             </div>
