@@ -8,11 +8,11 @@ export class Crypto extends React.Component {
         return (
             <div id="crypto" className="row">
                 <div className="row__image">
-                    <img key={id} src={image} alt={name} height={50}/>
+                    <img key={id} src={image} alt={name} height={40}/>
                 </div>
                 <div className="row__intro">
                     <h1>{name}</h1>
-                    <p>{symbol} - 200 Coins</p>
+                    <p>{symbol.toUpperCase()}</p>
                 </div>
                 <div className="row__mini_chart">
                     <img src={StockMiniChart} height={35}/>
