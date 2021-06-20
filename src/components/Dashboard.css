@@ -1,0 +1,35 @@
+.dashboard{
+    border: 1px solid orange;
+    flex: 0.7;
+    flex-direction: column;
+    display: flex;
+    color: white;
+}
+
+.dashboard__portfolio {
+    text-align: left;
+}
+
+.dashboard__portfolio h1 {
+    margin: 0;
+}
+
+.dashboard__portfolio p {
+    margin-top: 0;
+}
+
+.dashboard__container {
+    flex: 1;
+    background-color: black;
+    font-size: 12px;
+}
+
+.dashboard__chartSection {   
+}
+
+.dashboard__portfolio {
+}
+
+.dashboard__chart {
+}
+
