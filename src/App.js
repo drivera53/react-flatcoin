@@ -11,6 +11,12 @@ import './App.css';
 
 import Loading from './svg/Loading'
 
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from 'react-router-dom'
+
 class App extends Component {
 
   componentDidMount() {
@@ -33,16 +39,24 @@ class App extends Component {
     return (
       <>
         <div className="App">
-          <div className="app__navBar">
-            <NavBar />
-          </div>     
-          <div className="app__body">
-            <div className="app__container">
-              <Dashboard />
-              {this.handleLoading()}
+          <Router>
+            <div className="app__navBar">
+              <NavBar />
             </div>
-            <LoginForm ></LoginForm>
-          </div>
+            <Switch>
+              <Route exact path="/">   
+                <div className="app__body">
+                  <div className="app__container">
+                    <Dashboard />
+                    {this.handleLoading()}
+                  </div>
+                </div>
+              </Route>
+              <Route exact path="/login">
+                <LoginForm />
+              </Route> 
+            </Switch> 
+          </Router>
         </div>
       </>
     )

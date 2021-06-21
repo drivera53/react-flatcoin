@@ -1,17 +1,31 @@
 import React from 'react'
 import './NavBar.css'
 
+import {
+    Link
+} from 'react-router-dom'
+
+
 function NavBar() {
     return (
         <div className="navBar__wrapper">
             {/* Logo */}
             <div className="navBar__logo">
-                <img src="https://assets.coingecko.com/coins/images/12817/small/filecoin.png?1602753933" width={40} />
+                <Link to="/">
+                    <img src="https://assets.coingecko.com/coins/images/12817/small/filecoin.png?1602753933" width={40} />
+                </Link>
             </div>
             {/* Menu */}
             <div className="navBar__menuItems">
-                <a href="#">Portfolio</a>
-                <a href="#">Account</a>
+                <Link to="/">
+                    <a>Home</a>
+                </Link>
+                <Link to="/Login">
+                    <a>Login</a>
+                </Link>
+                <Link to="/signup">
+                    <a>Sign Up</a>
+                </Link>
             </div>
                         {/* Search */}
                         <div className="navBar__search">
