@@ -4,6 +4,7 @@ import { fetchCryptos} from './actions/cryptoActions'
 import CryptoList from './components/CryptoList'
 import NavBar from './components/NavBar'
 import Dashboard from './components/Dashboard'
+import LoginForm from './containers/loginForm'
 
 // import logo from './logo.svg';
 import './App.css';
@@ -40,6 +41,7 @@ class App extends Component {
               <Dashboard />
               {this.handleLoading()}
             </div>
+            <LoginForm ></LoginForm>
           </div>
         </div>
       </>

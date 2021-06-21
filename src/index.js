@@ -1,16 +1,22 @@
+// React
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 
+// Imporing CSS
 import './index.css';
 
+// Redux - Thunk
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
+
+// Imporing Reducers
 import cryptosReducer from './reducers/cryptosReducer'
 
 import reportWebVitals from './reportWebVitals';
 
+// Creating Store
 const store = createStore(cryptosReducer, applyMiddleware(thunk))
 
 ReactDOM.render(
