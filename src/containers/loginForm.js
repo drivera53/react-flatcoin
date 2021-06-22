@@ -1,6 +1,6 @@
 import React from 'react' 
 import { connect } from 'react-redux'
-// import { loginUserFetch } from '?'
+import { loginUserFetch } from '../actions/userActions'
 
 const initialState = {
     email: '',
@@ -12,9 +12,9 @@ const initialState = {
 class LoginForm extends React.Component{
     state = initialState
 
-    handleChange = (event) => {
+    handleChange = (e) => {
         this.setState({
-            [event.target.name]: event.target.value
+            [e.target.name]: e.target.value
         })
     }
 
@@ -57,7 +57,7 @@ class LoginForm extends React.Component{
 
     render() {
         return (
-            <form>
+            <form onSubmit={this.handleSubmit}>
                 <h1>Login Form</h1>
                 <label>Email</label>
                 <input
@@ -74,10 +74,17 @@ class LoginForm extends React.Component{
                     value={this.state.password}
                     onChange={this.handleChange}
                 />
+                {this.state.passwordError ? <div className="error">{this.state.passwordError}</div>: null}
                 <input type='submit'/>
             </form>
         )
     }
 }
 
-export default LoginForm
+const mapDispatchToProps = dispatch => {
+    return {
+        loginUserFetch: (userInfo) => dispatch(loginUserFetch(userInfo))
+    }
+}
+
+export default connect(null, mapDispatchToProps)(LoginForm)

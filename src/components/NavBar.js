@@ -2,7 +2,7 @@ import React from 'react'
 import './NavBar.css'
 
 import {
-    Link
+    Link, Route
 } from 'react-router-dom'
 
 
@@ -25,6 +25,9 @@ function NavBar() {
                 </Link>
                 <Link to="/signup">
                     <a>Sign Up</a>
+                </Link>
+                <Link to="/logout">
+                    <a>Logout</a>
                 </Link>
             </div>
                         {/* Search */}

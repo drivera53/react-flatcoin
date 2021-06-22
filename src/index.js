@@ -12,7 +12,9 @@ import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 
 // Imporing Reducers
+// import { combineReducers } from 'redux'
 import cryptosReducer from './reducers/cryptosReducer'
+// import usersReducer from './reducers/'
 
 import reportWebVitals from './reportWebVitals';
 

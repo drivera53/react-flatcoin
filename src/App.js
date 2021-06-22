@@ -44,6 +44,7 @@ class App extends Component {
               <NavBar />
             </div>
             <Switch>
+
               <Route exact path="/">   
                 <div className="app__body">
                   <div className="app__container">
@@ -52,9 +53,21 @@ class App extends Component {
                   </div>
                 </div>
               </Route>
+
               <Route exact path="/login">
                 <LoginForm />
-              </Route> 
+              </Route>
+
+              <Route exact path="/signup">
+                <h1>SignUp</h1>
+              </Route>
+
+              <Route exact path="/logout">
+                <h1>Loguot</h1>
+              </Route>
+
+              <Route path="/" render={() => <div><h1>Oops! That page doesn't exist.</h1></div>} />
+
             </Switch> 
           </Router>
         </div>
@@ -66,7 +79,8 @@ class App extends Component {
 const mapStateToProps = state => {
   return {
     cryptoData: state.cryptos,
-    loading: state.loading
+    loading: state.loading,
+    // login: state.user.login
   }
 }
 
