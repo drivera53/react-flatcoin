@@ -8,6 +8,7 @@ import NavBar from './components/NavBar'
 import NotLoggedInNavBar from './components/NotLoggedInNavBar'
 import Dashboard from './components/Dashboard'
 import LoginForm from './containers/loginForm'
+import SignUpForm from './containers/signUpForm'
 
 // import logo from './logo.svg';
 import './App.css';
@@ -83,7 +84,7 @@ class App extends Component {
               </Route>
 
               <Route exact path="/signup">
-                <h1>SignUp</h1>
+                <SignUpForm />
               </Route>
 
               <Route exact path="/logout">
@@ -112,7 +113,7 @@ const mapDispatchToProps = dispatch => {
   return {
     fetchCryptos: () => dispatch(fetchCryptos()),
     fetchLoggedInUser: () => dispatch(fetchLoggedInUser()),
-    logOutUser: () => dispatch(logOutUser)
+    logOutUser: () => dispatch(logOutUser())
   }
 }
 
