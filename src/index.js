@@ -8,18 +8,26 @@ import './index.css';
 
 // Redux - Thunk
 import { Provider } from 'react-redux'
-import { createStore, applyMiddleware } from 'redux'
+import { createStore, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk'
 
 // Imporing Reducers
-// import { combineReducers } from 'redux'
+import { combineReducers } from 'redux'
 import cryptosReducer from './reducers/cryptosReducer'
-// import usersReducer from './reducers/'
+import usersReducer from './reducers/usersReducer'
 
 import reportWebVitals from './reportWebVitals';
 
+const rootReducer = combineReducers({
+  user: usersReducer,
+  crypto: cryptosReducer
+})
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
 // Creating Store
-const store = createStore(cryptosReducer, applyMiddleware(thunk))
+// const store = createStore(cryptosReducer, applyMiddleware(thunk))
+const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)))
 
 ReactDOM.render(
   <React.StrictMode>

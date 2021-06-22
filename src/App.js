@@ -34,6 +34,13 @@ class App extends Component {
     }
   }
 
+  // handleLogoutClick = event => {
+  //   event.preventDefault()
+  //   // Remove the token from localStorage
+  //   localStorage.removeItem("token")
+  //   this.props.lo
+  // }
+
   render() {
     console.log(this.props.cryptoData)
     return (
@@ -78,9 +85,9 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    cryptoData: state.cryptos,
-    loading: state.loading,
-    // login: state.user.login
+    cryptoData: state.crypto.cryptos,
+    loading: state.crypto.loading,
+    login: state.user.login
   }
 }
 

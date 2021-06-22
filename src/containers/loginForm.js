@@ -23,7 +23,7 @@ class LoginForm extends React.Component{
         let passwordError = ''
         let emailError = ''
 
-        if ((!this.state.email) || (!this.email.includes("@"))){
+        if ((!this.state.email) || (!this.state.email.includes("@"))){
             emailError = "Invalid email"
         }
 
