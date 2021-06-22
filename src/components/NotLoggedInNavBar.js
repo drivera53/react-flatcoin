@@ -6,7 +6,7 @@ import {
 } from 'react-router-dom'
 
 
-export const NavBar = ({logOut}) => {
+function NotLoggedInNavBar() {
     return (
         <div className="navBar__wrapper">
             {/* Logo */}
@@ -17,25 +17,15 @@ export const NavBar = ({logOut}) => {
             </div>
             {/* Menu */}
             <div className="navBar__menuItems">
-                <Link to="/">
-                    <a>Home</a>
-                </Link>
-                {/* <Link to="/Login">
+                <Link to="/Login">
                     <a>Login</a>
                 </Link>
                 <Link to="/signup">
                     <a>Sign Up</a>
-                </Link> */}
-                <a onClick= {logOut}>Logout</a>
-            </div>
-                        {/* Search */}
-                        <div className="navBar__search">
-                <div className="navBar__searchContainer">
-                    <input placeholder="Search" type="text" />
-                </div>
+                </Link>
             </div>
         </div>
     )
 }
 
-export default NavBar
+export default NotLoggedInNavBar

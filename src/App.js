@@ -1,8 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { fetchCryptos} from './actions/cryptoActions'
+import { fetchCryptos } from './actions/cryptoActions'
+import { fetchLoggedInUser } from './actions/userActions'
+import { logOutUser } from './actions/userActions'
 import CryptoList from './components/CryptoList'
 import NavBar from './components/NavBar'
+import NotLoggedInNavBar from './components/NotLoggedInNavBar'
 import Dashboard from './components/Dashboard'
 import LoginForm from './containers/loginForm'
 
@@ -19,9 +22,15 @@ import {
 
 class App extends Component {
 
-  componentDidMount() {
-    console.log(this.props) // {cryptoData: Array(0), loading: false, fetchCryptos: ƒ}
+  fetchEverything = () => {
     this.props.fetchCryptos()
+    this.props.fetchLoggedInUser()
+  }
+
+  componentDidMount() {
+    console.log(this.props) // {cryptoData: Array(0), loading: false, login: false, fetchCryptos: ƒ}
+    // this.props.fetchCryptos()
+    this.fetchEverything()
   }
 
   handleLoading = () => {
@@ -38,8 +47,15 @@ class App extends Component {
   //   event.preventDefault()
   //   // Remove the token from localStorage
   //   localStorage.removeItem("token")
-  //   this.props.lo
+  //   // Remove the user object from the Redux store
+  //   this.props.logoutUser()
   // }
+
+  logOut = () => {
+    localStorage.removeItem("token")
+    this.props.logOutUser()
+    alert("Succesfully log out!")
+  }
 
   render() {
     console.log(this.props.cryptoData)
@@ -48,7 +64,8 @@ class App extends Component {
         <div className="App">
           <Router>
             <div className="app__navBar">
-              <NavBar />
+              {/* <NavBar /> */}
+              {this.props.login? <NavBar logOut = {this.logOut}/> : <NotLoggedInNavBar/> }
             </div>
             <Switch>
 
@@ -75,7 +92,7 @@ class App extends Component {
 
               <Route path="/" render={() => <div><h1>Oops! That page doesn't exist.</h1></div>} />
 
-            </Switch> 
+            </Switch>
           </Router>
         </div>
       </>
@@ -93,7 +110,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchCryptos: () => dispatch(fetchCryptos())
+    fetchCryptos: () => dispatch(fetchCryptos()),
+    fetchLoggedInUser: () => dispatch(fetchLoggedInUser()),
+    logOutUser: () => dispatch(logOutUser)
   }
 }
 
