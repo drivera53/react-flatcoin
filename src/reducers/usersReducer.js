@@ -9,12 +9,20 @@ const usersReducer = (state = {
                 user: action.payload,
                 login: true
             }
+
         case 'LOGOUT_USER':
             return {
                 ...state,
                 user: {},
                 login: false
             }
+            
+        case 'CREATE_TRADE':
+            return {
+                ...state,
+                user: action.payload
+            }
+
         default:
             return state
     }

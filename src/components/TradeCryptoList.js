@@ -6,22 +6,36 @@ import './CryptoList.css'
 class TradeCryptoList extends React.Component {
 
     render() {
-        const cryptos = this.props.cryptoData.map(c => <TradeCrypto crypto={c} />)
         const current_user = this.props.current_user
+        const cryptos = this.props.cryptoData.map(c => <TradeCrypto crypto={c} current_user={current_user}/>)
         return (
             <div className="cryptoList">
                 <div className="cryptoList__container">
                     <div className="crypto__header">
-                        <p>Hey {current_user.first_name}, pick a cryptocurrency bellow to get started:</p>
+                        <p>Hey {current_user.first_name}, click a cryptocurrency bellow to quickly buy 1 coin:</p>
                     </div>
                     <div className="crypto__content">
                         <div className="crypto__rows">
                         {cryptos}
                         </div>
                     </div>
-                    <div className="crypto__header">
-                        <p>My List</p>
+                    <div className="crypto__header_medium">
+                        <p>My Cryptocurrency holdings</p>
                     </div>
+                    <div className="crypto__content">
+                        <div className="crypto__rows">
+                        {cryptos}
+                        </div>
+                    </div>
+                    <div className="crypto__header_medium">
+                        <p>Trade history</p>
+                    </div>
+                    <div className="crypto__content">
+                        <div className="crypto__rows">
+                        {cryptos}
+                        </div>
+                    </div>
+
                 </div>
             </div>
         )
