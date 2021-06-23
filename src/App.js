@@ -4,11 +4,13 @@ import { fetchCryptos } from './actions/cryptoActions'
 import { fetchLoggedInUser } from './actions/userActions'
 import { logOutUser } from './actions/userActions'
 import CryptoList from './components/CryptoList'
+import TradeCryptoList from './components/TradeCryptoList'
 import NavBar from './components/NavBar'
 import NotLoggedInNavBar from './components/NotLoggedInNavBar'
 import Dashboard from './components/Dashboard'
 import LoginForm from './containers/loginForm'
 import SignUpForm from './containers/signUpForm'
+import Porfolio from './components/Portfolio'
 
 // import logo from './logo.svg';
 import './App.css';
@@ -29,18 +31,36 @@ class App extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props) // {cryptoData: Array(0), loading: false, login: false, fetchCryptos: ƒ}
+    // console.log(this.props) // {cryptoData: Array(0), loading: false, login: false, fetchCryptos: ƒ}
     // this.props.fetchCryptos()
     this.fetchEverything()
   }
 
-  handleLoading = () => {
-    console.log(this.props.loading) // Will console.log true or false
+  handleCryptoListLoading = () => {
+    // console.log(this.props.loading) // Will console.log true or false
     if(this.props.loading) {
       // return <div>Loading...</div>
       return <Loading />
     } else {
+      // console.log("Login")
+      // console.log(this.props.login)
+      // console.log(this.props.current_user)
+      // console.log(this.props.current_user.first_name)
       return <CryptoList cryptoData={this.props.cryptoData} />
+    }
+  }
+
+  handleTradeCryptoListLoading = () => {
+    // console.log(this.props.loading) // Will console.log true or false
+    if(this.props.loading) {
+      // return <div>Loading...</div>
+      return <Loading />
+    } else {
+      // console.log("Login")
+      // console.log(this.props.login)
+      // console.log(this.props.current_user)
+      // console.log(this.props.current_user.first_name)
+      return <TradeCryptoList cryptoData={this.props.cryptoData} current_user={this.props.current_user} />
     }
   }
 
@@ -59,7 +79,8 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.props.cryptoData)
+    // console.log(this.props.cryptoData)
+    // console.log(this.props.current_user)
     return (
       <>
         <div className="App">
@@ -73,8 +94,8 @@ class App extends Component {
               <Route exact path="/">   
                 <div className="app__body">
                   <div className="app__container">
-                    <Dashboard />
-                    {this.handleLoading()}
+                    <Dashboard current_user={this.props.current_user}/>
+                    {this.handleCryptoListLoading()}
                   </div>
                 </div>
               </Route>
@@ -91,6 +112,11 @@ class App extends Component {
                 <h1>Loguot</h1>
               </Route>
 
+              <Route exact path="/portfolio">
+                <Porfolio current_user={this.props.current_user}/>
+                <this.handleTradeCryptoListLoading />
+              </Route>
+
               <Route path="/" render={() => <div><h1>Oops! That page doesn't exist.</h1></div>} />
 
             </Switch>
@@ -105,7 +131,8 @@ const mapStateToProps = state => {
   return {
     cryptoData: state.crypto.cryptos,
     loading: state.crypto.loading,
-    login: state.user.login
+    login: state.user.login,
+    current_user: state.user.user
   }
 }
 

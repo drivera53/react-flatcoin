@@ -12,7 +12,7 @@ export const NavBar = ({logOut}) => {
             {/* Logo */}
             <div className="navBar__logo">
                 <Link to="/">
-                    <img src="https://assets.coingecko.com/coins/images/12817/small/filecoin.png?1602753933" width={40} />
+                    <img src="https://assets.coingecko.com/coins/images/12817/small/filecoin.png?1602753933" width={40} alt="Flatcoin-logo"/>
                 </Link>
             </div>
             {/* Menu */}
@@ -20,12 +20,9 @@ export const NavBar = ({logOut}) => {
                 <Link to="/">
                     <a>Home</a>
                 </Link>
-                {/* <Link to="/Login">
-                    <a>Login</a>
+                <Link to="/portfolio">
+                    <a>Portfolio</a>
                 </Link>
-                <Link to="/signup">
-                    <a>Sign Up</a>
-                </Link> */}
                 <a onClick= {logOut}>Logout</a>
             </div>
                         {/* Search */}

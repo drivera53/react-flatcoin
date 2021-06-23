@@ -50,7 +50,7 @@ export function fetchLoggedInUser() {
                     alert(data.error)
                     localStorage.removeItem('token')
                 } else {
-                    console.log("Fetch Logged In User")
+                    // console.log("Fetch Logged In User")
                     dispatch(loginUser(data))
                 }
             })

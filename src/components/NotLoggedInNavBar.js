@@ -12,7 +12,7 @@ function NotLoggedInNavBar() {
             {/* Logo */}
             <div className="navBar__logo">
                 <Link to="/">
-                    <img src="https://assets.coingecko.com/coins/images/12817/small/filecoin.png?1602753933" width={40} />
+                    <img src="https://assets.coingecko.com/coins/images/12817/small/filecoin.png?1602753933" width={40} alt="Flatcoin-logo"/>
                 </Link>
             </div>
             {/* Menu */}

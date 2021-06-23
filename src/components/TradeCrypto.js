@@ -3,11 +3,32 @@ import React from 'react'
 import './Crypto.css' 
 import StockMiniChart from './stock_mini_chart.svg'
 
-export class Crypto extends React.Component {
+export class TradeCrypto extends React.Component {
+
+    // handleBuySubmit = event => {
+    //     event.preventDefault()
+    //     console.log("Buy", id)
+    // }
+
     render() {
         const {name, image, id, current_price, price_change_percentage_24h, symbol} = this.props.crypto
+
+        const handleBuySubmit = () => {
+            console.log("Buy", id)
+        }
+
+
+
+        // handleSubmit = event => {
+        //     event.preventDefault()
+        //     if (this.validate()){
+        //         this.props.loginUserFetch(this.state)
+        //         this.setState(initialState)
+        //     }
+        // }
+
         return (
-            <div id="crypto" className="row">
+            <div id={id} className="row" onClick={handleBuySubmit}>
                 <div className="row__image">
                     <img key={id} src={image} alt={name} height={40}/>
                 </div>
@@ -27,4 +48,4 @@ export class Crypto extends React.Component {
     }
 }
 
-export default Crypto 
+export default TradeCrypto 
