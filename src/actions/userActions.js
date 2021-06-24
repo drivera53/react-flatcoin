@@ -100,7 +100,7 @@ export function createTradeFetch(tradeInfo){
         if(data.error){
             alert(data.error)
         } else {
-            console.log("Created!")
+            // console.log("Created!")
             // let user_json = JSON.parse(data.user)
             let trade_json = JSON.parse(data.user)
             // console.log(data)

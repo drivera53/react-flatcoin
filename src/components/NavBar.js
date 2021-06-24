@@ -25,8 +25,8 @@ export const NavBar = ({logOut}) => {
                 </Link>
                 <a onClick= {logOut}>Logout</a>
             </div>
-                        {/* Search */}
-                        <div className="navBar__search">
+            {/* Search */}
+            <div className="navBar__search">
                 <div className="navBar__searchContainer">
                     <input placeholder="Search" type="text" />
                 </div>

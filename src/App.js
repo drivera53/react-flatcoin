@@ -10,7 +10,6 @@ import NotLoggedInNavBar from './components/NotLoggedInNavBar'
 import Dashboard from './components/Dashboard'
 import LoginForm from './containers/loginForm'
 import SignUpForm from './containers/signUpForm'
-import Porfolio from './components/Portfolio'
 
 // import logo from './logo.svg';
 import './App.css';
@@ -26,8 +25,8 @@ import {
 class App extends Component {
 
   fetchEverything = () => {
-    this.props.fetchCryptos()
     this.props.fetchLoggedInUser()
+    this.props.fetchCryptos()
   }
 
   componentDidMount() {
@@ -113,7 +112,8 @@ class App extends Component {
               </Route>
 
               <Route exact path="/portfolio">
-                <Porfolio current_user={this.props.current_user}/>
+                {/* <Porfolio current_user={this.props.current_user}/> */}
+                {/* <TradeCryptoList cryptoData={this.props.cryptoData} current_user={this.props.current_user} /> */}
                 <this.handleTradeCryptoListLoading />
               </Route>
 

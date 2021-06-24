@@ -12,14 +12,15 @@ export class TradeCrypto extends React.Component {
         event.preventDefault()
         const tradeObject = {
             coin_name: this.props.crypto.name,
-            coin_id: this.props.crypto.id,
+            coin_id: this.props.crypto.symbol,
             price: this.props.crypto.current_price,
             quantity: 1,
+            image: this.props.crypto.image,
             user_id: this.props.current_user.id,
             portfolio_id: this.props.current_user.portfolios[0].id
         }
-        console.log("Buy")
-        console.log(tradeObject)
+        // console.log("Buy")
+        // console.log(tradeObject)
         this.props.createTradeFetch(tradeObject)
     }
 
