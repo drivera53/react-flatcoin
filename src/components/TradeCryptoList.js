@@ -9,8 +9,8 @@ class TradeCryptoList extends React.Component {
     
     render() {
         const current_user = this.props.current_user
-        console.log("Current User")
-        console.log(current_user)
+        // console.log("Current User")
+        // console.log(current_user)
         // const current_portfolio = this.props.current_user.portfolios[0]
         const cryptos = this.props.cryptoData.map(c => <TradeCrypto crypto={c} current_user={current_user}/>)
         const trades = current_user.trades.map(c => <TradeCryptoHistory trade={c}/>)
@@ -22,8 +22,8 @@ class TradeCryptoList extends React.Component {
                 <div className="cryptoList__container">
                     <div className="crypto__header">
                         <h1>{current_portfolio.name}</h1>
-                        <h1>Initial balance: ${current_portfolio.initial_balance}</h1>
-                        <h1>Buying power: ${current_portfolio.current_balance}</h1>
+                        <h1>Initial balance: ${(current_portfolio.initial_balance * 1).toFixed(0) }</h1>
+                        <h1>Buying power: ${(current_portfolio.current_balance * 1).toFixed(2)}</h1>
                     </div>
 
                     <div className="crypto__header_medium">

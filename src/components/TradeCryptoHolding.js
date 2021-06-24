@@ -23,7 +23,7 @@ export class TradeCryptoHolding extends React.Component {
                     <img src={StockMiniChart} height={35} alt="Mini-chart"/>
                 </div>
                 <div className="row__numbers">
-                    <p className="row_percentage">Total return: ${quantity}</p>
+                    <p className="row_percentage">Total return: $ TODO</p>
                     <p className="row__price">Total value: ${(average_price * quantity).toFixed(2)}</p>
                 </div> 
             </div>
