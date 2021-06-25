@@ -14,7 +14,7 @@ export class TradeCryptoHoldingDescription extends React.Component {
     state = {
         coin_name: this.props.coins.coin_name,
         coin_id: this.props.coins.coin_id,
-        price: Number(this.props.coins.average_price),
+        price: Number(this.props.crypto.current_price),
         quantity_field: '',
         image: this.props.coins.image,
         portfolio_id: this.props.coins.portfolio_id,
@@ -56,18 +56,21 @@ export class TradeCryptoHoldingDescription extends React.Component {
 
     render() {
         const {average_price, coin_id, coin_name, id, image, portfolio_id, quantity, user_id} = this.props.coins
-        const current_user = this.props.current_user
-        const current_portfolio = current_user.portfolios[0]
+        // const current_user = this.props.current_user
+        // const current_portfolio = current_user.portfolios[0]
+        // const foundCrypto = this.props.cryptos.find(p=> p.symbol === coin_id)
+        // console.log(foundCrypto) 
 
         return (
             <>
-                <h1>Buying Power: ${(current_portfolio.current_balance * 1).toFixed(2)}</h1>
+                {/* <h1>Buying Power: ${(current_portfolio.current_balance * 1).toFixed(2)}</h1> */}
+                <h1>Buying Power: ${(this.props.portfolio.current_balance * 1).toFixed(2)}</h1>
                 <div id={coin_id} className="row">
                     <div className="row__image">
                         <img key={coin_id} src={image} alt={coin_name} height={40}/>
                     </div>
                     <div className="row__intro">
-                        <h1>{coin_name}</h1>
+                        <h1>{coin_name} ${this.props.crypto.current_price.toFixed(2)}</h1>
                         <p>{coin_id.toUpperCase()} Quantity: {quantity}</p>
                         <p>Average cost: ${average_price}</p>
                     </div>
@@ -80,7 +83,7 @@ export class TradeCryptoHoldingDescription extends React.Component {
                     </div> 
                 </div>
                 <form onSubmit={this.handleSubmit}>
-                    <p>You can buy up to {(current_portfolio.current_balance / average_price).toFixed(0)} {coin_name}.</p>
+                    <p>You can buy up to {(this.props.portfolio.current_balance / this.props.crypto.current_price).toFixed(0)} {coin_name}.</p>
                     <p>You currently have {quantity} {coin_name} to sell.</p>
                     <h1>Trade</h1>
                     <label>Quantity:</label>
@@ -97,7 +100,7 @@ export class TradeCryptoHoldingDescription extends React.Component {
                     </select>
                     <br></br>
                     <input type='submit'/>
-                    <h1>Total: ${(this.state.quantity_field * average_price * this.state.tradeBuySell).toFixed(2)}</h1>
+                    <h1>Total: ${(this.state.quantity_field * this.props.crypto.current_price * this.state.tradeBuySell).toFixed(2)}</h1>
                 </form>
 
             </>

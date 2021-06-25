@@ -23,6 +23,9 @@ export const NavBar = ({logOut}) => {
                 <Link to="/portfolio">
                     <a>Portfolio</a>
                 </Link>
+                <Link to="/trades">
+                    <a>My Trades</a>
+                </Link>
                 <a onClick= {logOut}>Logout</a>
             </div>
             {/* Search */}

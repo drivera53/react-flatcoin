@@ -11,6 +11,7 @@ import Dashboard from './components/Dashboard'
 import LoginForm from './containers/loginForm'
 import SignUpForm from './containers/signUpForm'
 import TradeCryptoHoldingDescription from './components/TradeCryptoDescription'
+import TradeCryptoHistoryList from './components/TradeCryptoHistoryList'
 
 // import logo from './logo.svg';
 import './App.css';
@@ -61,6 +62,20 @@ class App extends Component {
       // console.log(this.props.current_user)
       // console.log(this.props.current_user.first_name)
       return <TradeCryptoList cryptoData={this.props.cryptoData} current_user={this.props.current_user} />
+    }
+  }
+
+  handleTradeCryptoHistoryListLoading = () => {
+    // console.log(this.props.loading) // Will console.log true or false
+    if(this.props.user_loading) {
+      // return <div>Loading...</div>
+      return <Loading />
+    } else {
+      // console.log("Login")
+      // console.log(this.props.login)
+      // console.log(this.props.current_user)
+      // console.log(this.props.current_user.first_name)
+      return <TradeCryptoHistoryList cryptoData={this.props.cryptoData} current_user={this.props.current_user} />
     }
   }
 
@@ -122,11 +137,19 @@ class App extends Component {
               
               <Route path="/coins/:coin_id" component={(routeInfo) => {
                 const paramsCoinId = routeInfo.match.params.coin_id
-                const foundCoin = this.props.current_user.coins.find(p=> p.coin_id === paramsCoinId) 
-                return <TradeCryptoHoldingDescription coins={foundCoin} current_user={this.props.current_user}/>
+                const foundCoin = this.props.current_user.coins.find(p=> p.coin_id === paramsCoinId)
+                const foundCrypto = this.props.cryptoData.find(p=> p.symbol === paramsCoinId)
+                const foundPortfolio = this.props.current_user.portfolios.find(p=> p.name === "Initial Portfolio")
+                return <TradeCryptoHoldingDescription coins={foundCoin} current_user={this.props.current_user} crypto={foundCrypto} portfolio={foundPortfolio}/>
                 // {this.handleCryptoDescriptionLoading(routeInfo)}
               }}>
               </Route>
+
+              <Route exact path="/trades">
+                {/* <Porfolio current_user={this.props.current_user}/> */}
+                {/* <TradeCryptoList cryptoData={this.props.cryptoData} current_user={this.props.current_user} /> */}
+                {this.handleTradeCryptoHistoryListLoading()}
+              </Route> 
 
               <Route exact path="/portfolio">
                 {/* <Porfolio current_user={this.props.current_user}/> */}
