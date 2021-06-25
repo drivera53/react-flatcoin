@@ -20,14 +20,14 @@ export class TradeCryptoHoldingDescription extends React.Component {
         portfolio_id: this.props.coins.portfolio_id,
         user_id: this.props.coins.user_id,
         tradeBuySell: 1,
-        quantity: 1
+        quantity: ''
     }
 
     handleChange = event => {
         this.setState({
             // [event.target.name]: Number(event.target.value)
             quantity_field: Number(event.target.value),
-            quantity: Number(event.target.value)
+            quantity: Number(event.target.value) * this.state.tradeBuySell
         })
         // console.log(this.state)
     }
@@ -48,10 +48,9 @@ export class TradeCryptoHoldingDescription extends React.Component {
 
     handleSubmit = event => {
         event.preventDefault()
-
         this.props.createTradeFetch(this.state)
         this.setState({
-            quantity: ""
+            quantity_field: ""
         })
     }
 
@@ -70,23 +69,21 @@ export class TradeCryptoHoldingDescription extends React.Component {
                     <div className="row__intro">
                         <h1>{coin_name}</h1>
                         <p>{coin_id.toUpperCase()} Quantity: {quantity}</p>
-                        <p>Average price: ${average_price}</p>
+                        <p>Average cost: ${average_price}</p>
                     </div>
                     <div className="row__mini_chart">
                         <img src={StockMiniChart} height={35} alt="Mini-chart"/>
                     </div>
                     <div className="row__numbers">
-                        <p className="row_percentage">Total return: $ TODO</p>
+                        {/* <p className="row_percentage">Total return: $ TODO</p> */}
                         <p className="row__price">Total value: ${(average_price * quantity).toFixed(2)}</p>
                     </div> 
                 </div>
                 <form onSubmit={this.handleSubmit}>
+                    <p>You can buy up to {(current_portfolio.current_balance / average_price).toFixed(0)} {coin_name}.</p>
+                    <p>You currently have {quantity} {coin_name} to sell.</p>
                     <h1>Trade</h1>
                     <label>Quantity:</label>
-                    <select id="buySell" onChange={this.buySellChange} >
-                        <option value="1">Buy</option>
-                        <option value="-1">Sell</option>
-                    </select>
                     <br></br>
                     <input
                         name="quantity"
@@ -94,6 +91,11 @@ export class TradeCryptoHoldingDescription extends React.Component {
                         onChange={this.handleChange}
                         value={this.state.quantity_field}
                     />
+                    <select id="buySell" onChange={this.buySellChange} >
+                        <option value="1">Buy</option>
+                        <option value="-1">Sell</option>
+                    </select>
+                    <br></br>
                     <input type='submit'/>
                     <h1>Total: ${(this.state.quantity_field * average_price * this.state.tradeBuySell).toFixed(2)}</h1>
                 </form>

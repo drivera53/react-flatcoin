@@ -41,3 +41,16 @@ color: #5AC53B;
 .row__image {
     padding: 0 10px;
 }
+
+.rowHoldings {
+    display: flex;
+    justify-content: space-between;
+    height: 80px;
+    padding: 0 24px;
+    align-items: center;
+    cursor: pointer;
+}
+
+.rowHoldings:hover {
+background-color: #6acff7;
+}
