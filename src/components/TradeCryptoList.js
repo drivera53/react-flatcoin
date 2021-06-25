@@ -5,6 +5,12 @@ import TradeCryptoHistory from './TradeCryptoHistory'
 
 import './CryptoList.css'
 
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route
+} from 'react-router-dom'
+
 class TradeCryptoList extends React.Component {
     
     render() {
@@ -21,9 +27,10 @@ class TradeCryptoList extends React.Component {
             <div className="cryptoList">
                 <div className="cryptoList__container">
                     <div className="crypto__header">
-                        <h1>{current_portfolio.name}</h1>
+                        <h1>{current_portfolio.name} <a href="./">Switch portfolios.</a></h1>
                         <h1>Initial balance: ${(current_portfolio.initial_balance * 1).toFixed(0) }</h1>
                         <h1>Buying power: ${(current_portfolio.current_balance * 1).toFixed(2)}</h1>
+                        <h1>Total return: $ TODO</h1>
                     </div>
 
                     <div className="crypto__header_medium">

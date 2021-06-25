@@ -7,6 +7,8 @@ class Dashboard extends React.Component {
 
 // function Dashboard() {
     const current_user = this.props.current_user
+    // const current_portfolio = current_user.portfolios[0]
+
         return (
             <div className="dashboard">
                 <div className="dashboard__container">
@@ -22,7 +24,8 @@ class Dashboard extends React.Component {
                     </div>
                     <div className="dashboard__buying__section">
                         <h2> Buying Power</h2>
-                        <h2> $4.11</h2>
+                        {/* <h2> ${(current_portfolio.current_balance * 1).toFixed(2)}</h2> */}
+                        <h2>$44.63</h2>
                     </div>
                     <div className="dashboard__market__section">
                         <div className="dashboard__market__box">

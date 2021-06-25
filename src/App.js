@@ -10,6 +10,7 @@ import NotLoggedInNavBar from './components/NotLoggedInNavBar'
 import Dashboard from './components/Dashboard'
 import LoginForm from './containers/loginForm'
 import SignUpForm from './containers/signUpForm'
+import TradeCryptoHoldingDescription from './components/TradeCryptoDescription'
 
 // import logo from './logo.svg';
 import './App.css';
@@ -51,7 +52,7 @@ class App extends Component {
 
   handleTradeCryptoListLoading = () => {
     // console.log(this.props.loading) // Will console.log true or false
-    if(this.props.loading) {
+    if(this.props.user_loading) {
       // return <div>Loading...</div>
       return <Loading />
     } else {
@@ -63,12 +64,18 @@ class App extends Component {
     }
   }
 
-  // handleLogoutClick = event => {
-  //   event.preventDefault()
-  //   // Remove the token from localStorage
-  //   localStorage.removeItem("token")
-  //   // Remove the user object from the Redux store
-  //   this.props.logoutUser()
+  // handleCryptoDescriptionLoading = (routeInfo) => {
+  //   // console.log(this.props.loading) // Will console.log true or false
+  //   if(this.props.user_loading) {
+  //     // return <div>Loading...</div>
+  //     return <Loading />
+  //   } else {
+  //     const paramsCoinId = routeInfo.match.params.coin_id
+  //     console.log(paramsCoinId)
+  //     const foundCoin = this.props.current_user.coins.find(p=> p.coin_id === paramsCoinId) 
+  //     console.log(foundCoin)
+  //     return <TradeCryptoHoldingDescription coins={foundCoin}/>
+  //   }
   // }
 
   logOut = () => {
@@ -78,6 +85,7 @@ class App extends Component {
   }
 
   render() {
+  
     // console.log(this.props.cryptoData)
     // console.log(this.props.current_user)
     return (
@@ -110,12 +118,21 @@ class App extends Component {
               <Route exact path="/logout">
                 <h1>Loguot</h1>
               </Route>
+            
+              
+              <Route path="/coins/:coin_id" component={(routeInfo) => {
+                const paramsCoinId = routeInfo.match.params.coin_id
+                const foundCoin = this.props.current_user.coins.find(p=> p.coin_id === paramsCoinId) 
+                return <TradeCryptoHoldingDescription coins={foundCoin} current_user={this.props.current_user}/>
+                // {this.handleCryptoDescriptionLoading(routeInfo)}
+              }}>
+              </Route>
 
               <Route exact path="/portfolio">
                 {/* <Porfolio current_user={this.props.current_user}/> */}
                 {/* <TradeCryptoList cryptoData={this.props.cryptoData} current_user={this.props.current_user} /> */}
-                <this.handleTradeCryptoListLoading />
-              </Route>
+                {this.handleTradeCryptoListLoading()}
+              </Route>            
 
               <Route path="/" render={() => <div><h1>Oops! That page doesn't exist.</h1></div>} />
 
@@ -132,7 +149,8 @@ const mapStateToProps = state => {
     cryptoData: state.crypto.cryptos,
     loading: state.crypto.loading,
     login: state.user.login,
-    current_user: state.user.user
+    current_user: state.user.user,
+    user_loading: state.user.loading
   }
 }
 

@@ -1,13 +1,15 @@
 const usersReducer = (state = {
     user: {}, 
-    login: false
+    login: false,
+    loading:true
 }, action) => {
     switch(action.type){
         case 'LOGIN_USER':
             return {
                 ...state,
                 user: action.payload,
-                login: true
+                login: true,
+                loading: false
             }
 
         case 'LOGOUT_USER':
@@ -16,7 +18,7 @@ const usersReducer = (state = {
                 user: {},
                 login: false
             }
-            
+
         case 'CREATE_TRADE':
             return {
                 ...state,
