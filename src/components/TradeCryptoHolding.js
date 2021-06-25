@@ -26,7 +26,7 @@ export class TradeCryptoHolding extends React.Component {
                     <div className="row__intro">
                         <h1>{coin_name}</h1>
                         <p>{coin_id.toUpperCase()} Quantity: {quantity}</p>
-                        <p>Average cost: ${average_price}</p>
+                        <p>Average cost: ${Number(average_price).toFixed(2)}</p>
                     </div>
                     <div className="row__mini_chart">
                         <img src={StockMiniChart} height={35} alt="Mini-chart"/>

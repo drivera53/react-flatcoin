@@ -3,6 +3,7 @@ import React from 'react'
 import './Crypto.css'
 import { createTradeFetch } from '../actions/userActions'
 import { connect } from 'react-redux'
+import LineGraph from './LineGraph'
 
 import {
     Link
@@ -63,46 +64,63 @@ export class TradeCryptoHoldingDescription extends React.Component {
 
         return (
             <>
-                {/* <h1>Buying Power: ${(current_portfolio.current_balance * 1).toFixed(2)}</h1> */}
-                <h1>Buying Power: ${(this.props.portfolio.current_balance * 1).toFixed(2)}</h1>
-                <div id={coin_id} className="row">
-                    <div className="row__image">
-                        <img key={coin_id} src={image} alt={coin_name} height={40}/>
+            <div className="cryptoList">
+                <div className="cryptoList__container">
+                    {/* <h1>Buying Power: ${(current_portfolio.current_balance * 1).toFixed(2)}</h1> */}
+                    <div className="crypto__header">
+                        <h1>Buying Power: ${(this.props.portfolio.current_balance * 1).toFixed(2)}</h1>
                     </div>
-                    <div className="row__intro">
-                        <h1>{coin_name} ${this.props.crypto.current_price.toFixed(2)}</h1>
-                        <p>{coin_id.toUpperCase()} Quantity: {quantity}</p>
-                        <p>Average cost: ${average_price}</p>
-                    </div>
-                    <div className="row__mini_chart">
-                        <img src={StockMiniChart} height={35} alt="Mini-chart"/>
-                    </div>
-                    <div className="row__numbers">
-                        {/* <p className="row_percentage">Total return: $ TODO</p> */}
-                        <p className="row__price">Total value: ${(average_price * quantity).toFixed(2)}</p>
-                    </div> 
-                </div>
-                <form onSubmit={this.handleSubmit}>
-                    <p>You can buy up to {(this.props.portfolio.current_balance / this.props.crypto.current_price).toFixed(0)} {coin_name}.</p>
-                    <p>You currently have {quantity} {coin_name} to sell.</p>
-                    <h1>Trade</h1>
-                    <label>Quantity:</label>
-                    <br></br>
-                    <input
-                        name="quantity"
-                        placeholder="Quantity"
-                        onChange={this.handleChange}
-                        value={this.state.quantity_field}
-                    />
-                    <select id="buySell" onChange={this.buySellChange} >
-                        <option value="1">Buy</option>
-                        <option value="-1">Sell</option>
-                    </select>
-                    <br></br>
-                    <input type='submit'/>
-                    <h1>Total: ${(this.state.quantity_field * this.props.crypto.current_price * this.state.tradeBuySell).toFixed(2)}</h1>
-                </form>
 
+                    <div className="crypto__header_medium">
+                        <h1>{coin_name} ${this.props.crypto.current_price.toFixed(2)}</h1>
+                        <div className="dashboard__chart">
+                            <LineGraph />
+                        </div>
+                    </div>
+
+                    <div className="crypto__content">
+                        <div id={coin_id} className="row">
+                            <div className="row__image">
+                                <img key={coin_id} src={image} alt={coin_name} height={40}/>
+                            </div>
+                            <div className="row__intro">
+                                <p>{coin_id.toUpperCase()} Quantity: {quantity}</p>
+                                <p>Average cost: ${average_price}</p>
+                            </div>
+                            <div className="row__mini_chart">
+                                <img src={StockMiniChart} height={35} alt="Mini-chart"/>
+                            </div>
+                            <div className="row__numbers">
+                                {/* <p className="row_percentage">Total return: $ TODO</p> */}
+                                <p className="row__price">Total value: ${(average_price * quantity).toFixed(2)}</p>
+                            </div> 
+                        </div>
+                    </div>
+
+                    <div className="crypto__header_medium">
+                        <form onSubmit={this.handleSubmit}>
+                            <p>You can buy up to {(this.props.portfolio.current_balance / this.props.crypto.current_price).toFixed(0)} {coin_name}.</p>
+                            <p>You currently have {quantity} {coin_name} to sell.</p>
+                            <h1>Trade</h1>
+                            <label>Quantity:</label>
+                            <br></br>
+                            <input
+                                name="quantity"
+                                placeholder="Quantity"
+                                onChange={this.handleChange}
+                                value={this.state.quantity_field}
+                            />
+                            <select id="buySell" onChange={this.buySellChange} >
+                                <option value="1">Buy</option>
+                                <option value="-1">Sell</option>
+                            </select>
+                            <br></br>
+                            <input type='submit'/>
+                            <h1>Total: ${(this.state.quantity_field * this.props.crypto.current_price * this.state.tradeBuySell).toFixed(2)}</h1>
+                        </form>
+                    </div>
+                </div>
+            </div>
             </>
         ) 
     }

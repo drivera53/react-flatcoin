@@ -47,14 +47,14 @@ class TradeCryptoList extends React.Component {
                         </div>
                     </div>
 
-                    <div className="crypto__header_medium">
+                    {/* <div className="crypto__header_medium">
                         <p>Trading history</p>
                     </div>
                     <div className="crypto__content">
                         <div className="crypto__rows">
                         {trades}
                         </div>
-                    </div>
+                    </div> */}
 
                 </div>
             </div>
